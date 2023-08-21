@@ -183,3 +183,43 @@ let a = "1010";
 let b = "1011";
 
 console.log(addBinary(a,b))
+
+// square root
+var mySqrt = function(x) {
+    if(x === 0) return 0
+     let num = 1;
+   for(let i = 1; i <= x; i++){
+    if (i * i === x) return i;
+    if(i * i < x && (i+1)*(i+1) === x) return i+1;
+    if (i * i < x && (i+1)*(i+1) > x) return i;
+   }
+};
+
+console.log(mySqrt(9))
+
+// You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
+function climbStairs(n){
+    if (n < 1 || n > 45) return "pls give a num between 1 and 45"
+    if (n >= 1 && n <= 3) return n;
+}
+
+// You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.
+function merge(nums1, m, nums2, n){
+   for (let i = 0; i <= nums2.length; i++){
+    nums1.push(nums2[i])
+   }
+    return nums1.filter(num => num > 0).sort()
+}
+nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3;
+console.log(merge(nums1, m, nums2, n))
+
+// palindrome
+function isPalindromw(s){
+    if (s < 1) return false;
+    if (s.length === 1) return true;
+    s = s.replace(/[^a-z0-9]/gi,'').toLowerCase()
+   let yes = s.split('').reverse().join('');
+   if (yes == s) return true;
+   return false;
+}
+console.log(isPalindromw("A man, a plan, a canal: Panama"))
