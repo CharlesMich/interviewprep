@@ -182,7 +182,7 @@ var addBinary = function(a, b) {
 let a = "1010";
 let b = "1011";
 
-console.log(addBinary(a,b))
+// console.log(addBinary(a,b))
 
 // square root
 var mySqrt = function(x) {
@@ -223,3 +223,39 @@ function isPalindromw(s){
    return false;
 }
 console.log(isPalindromw("A man, a plan, a canal: Panama"))
+
+// Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
+
+var singleNumber = function(nums12) {
+    nums.sort()
+
+    for(let i=0;i<nums.length;i++){
+    
+        if(nums[i]==nums[i+1]){
+            i++
+        }else{
+            return nums[i]
+        }
+    }
+
+};
+
+// console.log(singleNumber(nums123))
+
+var maxProfit = function(prices) {
+    let buy = -Infinity;
+    let sell = -Infinity;
+    let diff = -Infinity;
+    for (let i = 0; i < prices.length-1; i++){
+        for (let j = i+1; j < prices.length; j++){
+            if (prices[j] - prices[i] > diff){
+                diff =  prices[j] - prices[i];
+                buy = prices[i];
+                sell = prices[j]
+            }
+        }
+    }
+    if(diff > 0) return diff;
+    return 0;
+};
+console.log(maxProfit([7,1,5,3,6,4]))
