@@ -9,7 +9,7 @@ var removeElement = function(nums, val) {
   };
 
   nums = [0,1,2,2,3,0,4,2], val = 2
-  console.log(removeElement(nums, val))
+//   console.log(removeElement(nums, val))
 
 // slice method
 const spliceElement = (nums, val) => {
@@ -20,7 +20,7 @@ const spliceElement = (nums, val) => {
     }
     return nums;
 }  
-console.log(spliceElement(nums, val))
+// console.log(spliceElement(nums, val))
 
 // Roman to integer
 
@@ -41,7 +41,7 @@ function romanToInt1(s){
     }
     return value
 }
-console.log(romanToInt1('MCMXCIV'))
+// console.log(romanToInt1('MCMXCIV'))
 
 // Write a function to find the longest common prefix string amongst an array of strings.
 let longestCommonPrefix = function(strs) {
@@ -94,7 +94,7 @@ function removeDuplicates(nums){
     return nums;
 }
 
-console.log(removeDuplicates([1,2,3,4,5,5,6,6,6,7,8,9]))
+// console.log(removeDuplicates([1,2,3,4,5,5,6,6,6,7,8,9]))
 
 // remove a particular element in a array
 function removeElement(nums, val){
@@ -106,7 +106,8 @@ function removeElement(nums, val){
         }
     }
     return nums;
-}console.log(removeElement([3,2,2,3], 3))
+}
+// console.log(removeElement([3,2,2,3], 3))
 
 // find the index of the first occurance of a string 
 var strStr = function(haystack, needle) {
@@ -117,7 +118,7 @@ var strStr = function(haystack, needle) {
 
 const haystack = 'mississippi'
 const needle = 'issip'
-console.log(strStr(haystack, needle))
+// console.log(strStr(haystack, needle))
 
 function strStr(haystack, needle){
     const len = needle.length;
@@ -158,7 +159,7 @@ function lengthOfLastWord(s){
 }
 
 const word = "   fly me   to   the moon  ";
-console.log(lengthOfLastWord(word))
+// console.log(lengthOfLastWord(word))
 
 // You are given a large integer represented as an integer array digits, where each digits[i] is the ith digit of the integer. The digits are ordered from most significant to least significant in left-to-right order. The large integer does not contain any leading 0's.
 var plusOne = function(arr) {
@@ -173,7 +174,7 @@ var plusOne = function(arr) {
     return arr;
 };
 let digit = [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]
-console.log(plusOne(digit))
+// console.log(plusOne(digit))
 
 // Given two binary strings a and b, return their sum as a binary string.
 var addBinary = function(a, b) {
@@ -195,7 +196,7 @@ var mySqrt = function(x) {
    }
 };
 
-console.log(mySqrt(9))
+// console.log(mySqrt(9))
 
 // You are climbing a staircase. It takes n steps to reach the top. Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
 function climbStairs(n){
@@ -211,7 +212,7 @@ function merge(nums1, m, nums2, n){
     return nums1.filter(num => num > 0).sort()
 }
 nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3;
-console.log(merge(nums1, m, nums2, n))
+// console.log(merge(nums1, m, nums2, n))
 
 // palindrome
 function isPalindromw(s){
@@ -222,7 +223,7 @@ function isPalindromw(s){
    if (yes == s) return true;
    return false;
 }
-console.log(isPalindromw("A man, a plan, a canal: Panama"))
+// console.log(isPalindromw("A man, a plan, a canal: Panama"))
 
 // Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.
 
@@ -243,19 +244,120 @@ var singleNumber = function(nums12) {
 // console.log(singleNumber(nums123))
 
 var maxProfit = function(prices) {
-    let buy = -Infinity;
-    let sell = -Infinity;
-    let diff = -Infinity;
-    for (let i = 0; i < prices.length-1; i++){
-        for (let j = i+1; j < prices.length; j++){
-            if (prices[j] - prices[i] > diff){
-                diff =  prices[j] - prices[i];
-                buy = prices[i];
-                sell = prices[j]
-            }
+    let maxProfit = 0;
+     let minPrice  = prices[0];
+     for (let i = 1; i < prices.length; i++){
+         const currentPrice = prices[i];
+         const currentProfit = currentPrice-minPrice;
+         if(currentProfit > maxProfit){
+             maxProfit = currentProfit;
+       
+     }
+     if(currentPrice < minPrice){
+         minPrice = currentPrice;
+     }
+     }
+     return maxProfit;
+};
+// console.log(maxProfit([7,1,5,3,6,4]))
+
+// Given an integer array nums, return true if any value appears at least twice 
+// in the array, and return false if every element is distinct.
+var containsDuplicate = function(nums) {
+    let newSet = new Set(nums)
+    return newSet.size !== nums.length;
+};
+let nums = [1,1,1,3,3,4,3,2,4,2]
+// console.log(containsDuplicate(nums))
+
+// Given an array nums of size n, return the majority element.
+var majorityElement = function(nums) {
+    let obj = {};
+    for(let i = 0; i < nums.length; i++){
+       if (obj[nums[i]] === undefined){
+        obj[nums[i]] = 1;
+       } else {
+        obj[nums[i]] += 1;
+       }
+    }
+   let max = -Infinity;
+   let num;
+   for( let key in obj){
+    if(obj[key] > max){
+        max = obj[key];
+        num = key;
+    }
+   }
+   return num;
+   }
+
+let nums1 = [1,1,1,3,3,4,3,2,4,2]
+// console.log(majorityElement(nums1))
+
+// You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots.// Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
+var canPlaceFlowers = function(flowerbed, n) {
+    let zeros = flowerbed.filter(ele => ele === 0);
+    if (zeros.length === 2n + 1) return true;
+    return false
+};
+
+var repeatedSubstringPattern = function(t) {
+   let set = new Set(t.split(''))
+   return set
+};
+let t = "abcabcabcabc"
+console.log(repeatedSubstringPattern(t))
+
+// move zeroes
+var moveZeroes = function(nums) {
+   let count = 0;
+     for (let i = 0; i < nums.length; i++){
+         if(nums[i] === 0){
+             count++;
+         } else {
+            [nums[i-count], nums[i]] = [nums[i], nums[i-count]]
+         }
+    }
+};
+
+// Given an integer columnNumber, return its corresponding column title as it appears in an Excel sheet.
+// For example:
+
+// A -> 1
+// B -> 2
+// C -> 3
+
+// Z -> 26
+// AA -> 27
+// AB -> 28 
+
+// Given an array nums containing n distinct numbers in the range [0, n], return the only number in the range that is missing from the array.
+var missingNumber = function(nums){
+    nums.sort()
+    for( let i = 0; i < nums.length; i++){
+        if(i !== nums[i]){
+            return i;
         }
     }
-    if(diff > 0) return diff;
-    return 0;
+}
+
+// console.log(missingNumber([9,6,4,2,3,5,7,0,1]))
+
+
+// Given the head of a singly linked list, reverse the list, and return the reversed list.
+
+var reverseList = function(head) {
+    let prev = null;
+    let current = head;
+    let next = null;
+
+    while(curr){
+        next = current.next;
+        current.next = prev;
+        prev = current;
+        current = next;
+    }
+    return prev;
 };
-console.log(maxProfit([7,1,5,3,6,4]))
+let head = [1,2,3,4,5]
+console.log(reverseList(head))
