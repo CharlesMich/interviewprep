@@ -14,6 +14,7 @@ var removeElement = function(nums, val) {
 // slice method
 const spliceElement = (nums, val) => {
     for (let i = 0; i < nums.length; i++){
+        for ()
         if (nums[i]=== val){
             nums.splice(i,1)
         }
@@ -347,17 +348,53 @@ var missingNumber = function(nums){
 // Given the head of a singly linked list, reverse the list, and return the reversed list.
 
 var reverseList = function(head) {
+    let curr = head;
     let prev = null;
-    let current = head;
     let next = null;
-
     while(curr){
-        next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
+        next = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = prev;
     }
-    return prev;
-};
+    return prev
+}
 let head = [1,2,3,4,5]
-console.log(reverseList(head))
+// console.log(reverseList(head))
+
+// reverse an Array;
+function reverseArrary(arr){
+    for(let i = 0; j = arr.length-1; i++, j--){
+      
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp
+       }
+    
+    return arr;
+}
+
+console.log(reverseArrary([5,4,3,2,1]))
+
+// Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the 
+// array such that nums[i] == nums[j] and abs(i - j) <= k.
+var containsNearbyDuplicate = function(nums, k) {
+    for (let i = 0; i < nums.length; i++){
+        for (let j = i+1; j < nums.length; j++){
+            if(i !== j && nums[i] === nums[j] && Math.abs(i-j) <= k){
+                return true;
+            }
+        }
+    }
+    return false;
+};
+
+let numsa = [1,2,3,1] //k = 3
+// Output: true
+
+let numsb = [1,0,1,1] //k = 1
+// Output: true
+
+let numsc = [1,2,3,1,2,3], //k = 2
+// Output: false
+
