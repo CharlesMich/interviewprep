@@ -398,3 +398,46 @@ let numsb = [1,0,1,1] //k = 1
 let numsc = [1,2,3,1,2,3], //k = 2
 // Output: false
 
+// reverse a string
+var reverseString = function(s) {
+    return s.reverse()
+};
+
+// Given an array of strings words and a string s, determine if s is an acronym of words.
+// The string s is considered an acronym of words if it can be formed by concatenating the first character 
+// of each string in words in order. For example, "ab" can be formed from ["apple", "banana"], but it can't be formed from ["bear", "aardvark"].
+// Return true if s is an acronym of words, and false otherwise.
+var isAcronym = function(words, s) {
+    let newArr = [];
+    for (let i = 0; i < words.length; i++){
+        newArr.push(words[i][0])
+    }
+    console.log(s.split(''), newArr)
+    if(newArr.join('') === s) return true;
+    return false;
+};
+
+
+// Given an integer n, return true if it is a power of two. Otherwise, return false. An integer n is a power of two, if there exists an integer x such that n == 2x.
+var isPowerOfTwo = function(n) {
+    let power = 1;
+    while (power < n){
+        power = power * 2;
+    }
+    if(power === n) return true;
+    return false
+};
+
+// longest prefix in words in a array
+var longestCommonPrefix1 = function(strs) {
+    if(!strs.length) return '';
+    let longestPrefix = '';
+    for (let i = 0; i < strs[0].length; i++){
+        let char = strs[0][i];
+        if(!char) return "";
+        if(strs.every(str=> str[i]=== char)){
+            longestPrefix += char
+        } else break;
+    }
+    return longestPrefix
+};
