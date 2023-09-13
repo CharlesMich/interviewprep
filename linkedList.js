@@ -1,4 +1,16 @@
+class LinkedListNode {
+    constructor(val) {
+      this.value = val;
+      this.next = null;
+    }
+  }
 
+  class LinkedList {
+    constructor() {
+      this.head = null
+      this.length = 0
+    }
+}
 
 var hasCycle = function(head) {
     let curr = head;
