@@ -14,7 +14,6 @@ var removeElement = function(nums, val) {
 // slice method
 const spliceElement = (nums, val) => {
     for (let i = 0; i < nums.length; i++){
-        for ()
         if (nums[i]=== val){
             nums.splice(i,1)
         }
@@ -395,7 +394,7 @@ let numsa = [1,2,3,1] //k = 3
 let numsb = [1,0,1,1] //k = 1
 // Output: true
 
-let numsc = [1,2,3,1,2,3], //k = 2
+let numsc = [1,2,3,1,2,3] //k = 2
 // Output: false
 
 // reverse a string
@@ -453,4 +452,23 @@ var findDisappearedNumbers = function(nums) {
         }
     }
     return newArr
+};
+
+// convert string to lowercase
+var toLowerCase = function(s) {
+    return s.toLowerCase()
+};
+
+
+// You are given an array of characters letters that is sorted in non-decreasing order, and a character target. There are at least two different characters in letters. Return the smallest character in letters that is lexicographically greater than target. If such a character does not exist, return the first character in letters.
+
+var nextGreatestLetter = function(letters, target) {
+    letters.sort();
+    for(let i = 0; i < letters.length; i++){
+        if(letters[i] > target){
+            return letters[i]
+        }
+    
+    }
+    return letters[0]
 };
