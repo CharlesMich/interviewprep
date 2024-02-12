@@ -494,3 +494,12 @@ var isHappy = function (n) {
       }
     }
   };
+// find majority element in the array
+ const majorityElement = function(nums) {
+    const majNum = Math.ceil(nums.length / 2)
+   return nums.find(num => nums.filter(item => item === num).length >= majNum)
+  };
+
+  let arr11 = [3,2,3];
+  let arr12 = [2,2,1,1,1,2,2];
+  console.log(majorityElement(arr11))
