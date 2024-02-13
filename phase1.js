@@ -503,3 +503,19 @@ var isHappy = function (n) {
   let arr11 = [3,2,3];
   let arr12 = [2,2,1,1,1,2,2];
   console.log(majorityElement(arr11))
+
+//   find first palendromic string
+const words = ["abc","car","ada","racecar","cool"]
+
+const firstPalindrome = function(words) {
+    for (let i = 0; i < words.length; i++){
+        console.log(words[i], words[i].split('').reverse().join(''))
+        if(words[i] == words[i].split('').reverse().join('')){
+            return words[i]
+        }
+    }
+    return false
+};
+
+console.log(firstPalindrome(words))
+
