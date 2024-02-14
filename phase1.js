@@ -519,3 +519,18 @@ const firstPalindrome = function(words) {
 
 console.log(firstPalindrome(words))
 
+// fizz if divisible by 3, buzz if divisible by 5 and fizzbuzz if divisible by 3 and f
+var fizzBuzz = function(n) {
+    let newArr = []
+    for (let i = 1; i < n+1; i++){
+       
+        if (i % 3 == 0 && i% 5 !== 0) newArr.push("Fizz")
+        if (i % 3 !==0 && i% 5 ==0) newArr.push("Buzz")
+        if (i % 3 == 0 && i% 5 == 0) newArr.push("FizzBuzz")
+        if(i%3 !==0 && i%5!==0) newArr.push(i.toString())
+    }
+return newArr;
+};
+console.log(fizzBuzz(5))
+
+
