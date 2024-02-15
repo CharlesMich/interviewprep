@@ -533,4 +533,21 @@ return newArr;
 };
 console.log(fizzBuzz(5))
 
+// find largest possible polygon periter with the given numbers
+const polynums = [1,12,1,2,5,50,3]
+
+var largestPerimeter = function(nums) {
+    nums.sort((a,b) => a-b)
+    let Csum = 0; Psum = 0;
+    for (let i = 0; i < nums.length; i++){
+        if(nums[i] < Csum){
+            Psum = Csum + nums[i];
+        }
+            Csum += nums[i]
+    }
+    return (Psum == 0)? -1:Psum
+};
+console.log(largestPerimeter(polynums))
+
+
 
