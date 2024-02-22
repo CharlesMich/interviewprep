@@ -8,7 +8,7 @@ var removeElement = function(nums, val) {
    return nums.filter(ele=> ele !== val)
   };
 
-  nums = [0,1,2,2,3,0,4,2], val = 2
+//   nums = [0,1,2,2,3,0,4,2], val = 2
 //   console.log(removeElement(nums, val))
 
 // slice method
@@ -211,7 +211,7 @@ function merge(nums1, m, nums2, n){
    }
     return nums1.filter(num => num > 0).sort()
 }
-nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3;
+// nums1 = [1,2,3,0,0,0], m = 3, nums2 = [2,5,6], n = 3;
 // console.log(merge(nums1, m, nums2, n))
 
 // palindrome
@@ -306,7 +306,7 @@ var repeatedSubstringPattern = function(t) {
    return set
 };
 let t = "abcabcabcabc"
-console.log(repeatedSubstringPattern(t))
+// console.log(repeatedSubstringPattern(t))
 
 // move zeroes
 var moveZeroes = function(nums) {
@@ -373,7 +373,7 @@ function reverseArrary(arr){
     return arr;
 }
 
-console.log(reverseArrary([5,4,3,2,1]))
+// console.log(reverseArrary([5,4,3,2,1]))
 
 // Given an integer array nums and an integer k, return true if there are two distinct indices i and j in the 
 // array such that nums[i] == nums[j] and abs(i - j) <= k.
@@ -411,7 +411,7 @@ var isAcronym = function(words, s) {
     for (let i = 0; i < words.length; i++){
         newArr.push(words[i][0])
     }
-    console.log(s.split(''), newArr)
+    // console.log(s.split(''), newArr)
     if(newArr.join('') === s) return true;
     return false;
 };
@@ -495,21 +495,21 @@ var isHappy = function (n) {
     }
   };
 // find majority element in the array
- const majorityElement = function(nums) {
-    const majNum = Math.ceil(nums.length / 2)
-   return nums.find(num => nums.filter(item => item === num).length >= majNum)
-  };
+//  const majorityElement = function(nums) {
+//     const majNum = Math.ceil(nums.length / 2)
+//    return nums.find(num => nums.filter(item => item === num).length >= majNum)
+//   };
 
   let arr11 = [3,2,3];
   let arr12 = [2,2,1,1,1,2,2];
-  console.log(majorityElement(arr11))
+//   console.log(majorityElement(arr11))
 
 //   find first palendromic string
 const words = ["abc","car","ada","racecar","cool"]
 
 const firstPalindrome = function(words) {
     for (let i = 0; i < words.length; i++){
-        console.log(words[i], words[i].split('').reverse().join(''))
+        // console.log(words[i], words[i].split('').reverse().join(''))
         if(words[i] == words[i].split('').reverse().join('')){
             return words[i]
         }
@@ -517,7 +517,7 @@ const firstPalindrome = function(words) {
     return false
 };
 
-console.log(firstPalindrome(words))
+// console.log(firstPalindrome(words))
 
 // fizz if divisible by 3, buzz if divisible by 5 and fizzbuzz if divisible by 3 and f
 var fizzBuzz = function(n) {
@@ -531,7 +531,7 @@ var fizzBuzz = function(n) {
     }
 return newArr;
 };
-console.log(fizzBuzz(5))
+// console.log(fizzBuzz(5))
 
 // find largest possible polygon periter with the given numbers
 const polynums = [1,12,1,2,5,50,3]
@@ -547,7 +547,7 @@ var largestPerimeter = function(nums) {
     }
     return (Psum == 0)? -1:Psum
 };
-console.log(largestPerimeter(polynums))
+// console.log(largestPerimeter(polynums))
 
 // group anagrams
 strs = ["eat","tea","tan","ate","nat","bat"]
@@ -569,5 +569,32 @@ for (let item in obj){
    return arr;
 }
 
-console.log(groupAnagrams(strs))
+// console.log(groupAnagrams(strs))
 
+// .....................................
+
+const height = [1,8,6,2,5,4,8,3,7]
+
+var maxArea = function(height) {
+    let sum = 0;
+    const obj = {};
+    // const arr = [];
+    for(let i = 0; i < height.length; i++){
+        for (let j = i+1; j < height.length; j++){
+            if(!obj[i]){
+                obj[i] = [height[j]]
+            } else {
+                obj[i].push(height[j])
+            }
+        }
+    }
+    
+    for (let item in obj){
+        newSum =  obj[item].reduce((a,b)=> a+b) 
+        if (newSum > sum){
+            sum = newSum;
+        }
+    }
+    return sum;
+};
+console.log(maxArea(height))
