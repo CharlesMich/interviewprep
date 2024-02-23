@@ -597,4 +597,39 @@ var maxArea = function(height) {
     }
     return sum;
 };
-console.log(maxArea(height))
+
+// console.log(maxArea(height))
+
+var maxArea1 = function (height) {
+    let i = 0;
+    let j = height.length - 1;
+    let max = Number.MIN_SAFE_INTEGER;
+    while (i < j) {
+        const area = Math.min(height[i], height[j]) * (j - i);
+        max = Math.max(max, area);
+        if (height[i] > height[j]) {
+            j--;
+        } else { i++ }
+    }
+    return max;
+};
+// console.log(maxArea1(height))
+
+// Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+
+var myPow = function(x, n) {
+    let product = 1;
+   let arr = [];
+   if(n > 0 ){
+       for (let i = 1; i<= n; i++ ){
+       product = product * x
+       }
+   } else {
+    for (let i = 1; i<= -n; i++ ){
+        product = product * 1/x
+        }
+   }
+   return product;
+};
+
+console.log(myPow(2,-2))
