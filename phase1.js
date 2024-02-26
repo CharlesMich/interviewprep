@@ -632,4 +632,21 @@ var myPow = function(x, n) {
    return product;
 };
 
-console.log(myPow(2,-2))
+// reverse an integer
+// -2^31 <= x <= 2^31 - 1
+var reverse = function(x) {
+   let bit = Math.pow(2, 31) - 1;
+   let rev = x.toString().split('').reverse().join('');
+  
+   let result = parseInt(rev);
+  
+    if (result > bit || result < -(bit )){
+        return 0;
+    }
+    if(x<0){
+        return -result
+    }else{
+        return result
+    }
+};
+
