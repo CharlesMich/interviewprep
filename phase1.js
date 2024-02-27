@@ -650,3 +650,25 @@ var reverse = function(x) {
     }
 };
 
+// triplet sum
+// Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0. Notice that the solution set must not contain duplicate triplets.
+let nums3 = [-1,0,1,2,-1,-4]
+
+var threeSum = function(nums) {
+    const newArr = [];
+    for (let i = 0; i < nums.length; i++){
+        for (let j = i+1; j < nums.length; j++){
+            for (let k = j + 1; k < nums.length; k++){
+                if(i != j && i != k && j != k && nums[i] + nums[j] + nums[k] == 0){
+                    if(!newArr.includes([nums[i], nums[j], nums[k]].sort())){
+                        newArr.push([nums[i], nums[j], nums[k]].sort())
+                    }
+                }
+
+                    
+            }
+        }
+    }
+    return newArr;
+};
+console.log(threeSum(nums3))
