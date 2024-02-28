@@ -26,3 +26,26 @@ function findNeighbors(node, matrix) {
 }    
 
 console.log(findNeighbors([1,1], matrix1)) 
+
+// find shortest route
+function bfsPath(matrix, startNode, endValue) {
+    let output = [];
+    let visited = new Set([startNode.toString()]);
+    let queue = [startNode];
+    while (queue.length){
+        let node = queue.shift();
+        output.push(node);
+        if(matrix[node[0]][node[1]]=== endValue){
+            return output;
+        }
+        let neighbors = findNeighbors(node, matrix);
+        for (let neighbor of neighbors){
+            if(!visited.has(neighbor.toString())){
+                visited.add(neighbor.toString());
+                queue.push(neighbor)
+            }
+        }
+    }
+    return false;
+}
+console.log(bfsPath(matrix1, [0,0], 16)); 
