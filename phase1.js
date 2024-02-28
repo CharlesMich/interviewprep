@@ -671,4 +671,23 @@ var threeSum = function(nums) {
     }
     return newArr;
 };
-console.log(threeSum(nums3))
+// console.log(threeSum(nums3))
+
+// longest substring without repeating
+let string = "abcabcbb"
+// answer: Output: 3
+var lengthOfLongestSubstring = function(s) {
+    let arr = [];
+    let stringArr = s.split("");
+
+    for (let i = 0; i < stringArr.length; i++ ){
+        if (!arr.includes(stringArr[i])){
+            arr.push(stringArr[i])
+        } else {
+            return arr.length;
+        }
+    }
+    return arr.length;
+};
+
+// console.log(lengthOfLongestSubstring(string))
