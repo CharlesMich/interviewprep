@@ -691,3 +691,48 @@ var lengthOfLongestSubstring = function(s) {
 };
 
 // console.log(lengthOfLongestSubstring(string))
+
+var letterCombinations = function(digits) {
+let digitsMapping = {
+    1: [""],
+    2: ["a", "b", "c"],
+    3: ["d", "e", "f"],
+    4: ["g", "h", "i"],
+    5: ["j", "k", "l"],
+    6: ["m", "n", "o"],
+    7: ["p", "q", "r", "s"],
+    8: ["t", "u", "v"],
+    9: ["w", "x", "y", "z"],
+};
+const newArr = [];
+for( let i = 0; i < digitsMapping[digits[0]]; i++){
+
+}
+
+}
+
+// Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order. The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the  frequency of at least one of the chosen numbers is different.The test cases are generated such that the number of unique combinations that sum up to target is less than 150 combinations for the given input.
+
+var combinationSum = function(candidates, target) {
+
+    let result = []
+
+    for(let i = 0; i < candidates.length; i++){
+        let res = [];
+        const dfs = (curCand, curTarget, value)=> {
+            if(curTarget == 0) res.push(value);
+            if(curTarget <= 0) return;
+            for (let g = 0; g < curCand.length; g++){
+                dfs(curCand.slice(g), curTarget-curCand[g], [...value, curCand[g]]);
+            }
+        }
+        dfs(candidates, target, []);
+        return res;
+    }
+    
+};
+
+// Input: candidates = [2,3,6,7], target = 7
+// Output: [[2,2,3],[7]]
+
+console.log(combinationSum([2,3,6,7],  7))
