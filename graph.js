@@ -25,7 +25,7 @@ function findNeighbors(node, matrix) {
     return neighbors;
 }    
 
-console.log(findNeighbors([1,1], matrix1)) 
+// console.log(findNeighbors([1,1], matrix1)) 
 
 // find shortest route
 function bfsPath(matrix, startNode, endValue) {
@@ -48,4 +48,25 @@ function bfsPath(matrix, startNode, endValue) {
     }
     return false;
 }
-console.log(bfsPath(matrix1, [0,0], 16)); 
+// console.log(bfsPath(matrix1, [0,0], 16)); 
+
+// find island size
+function getNeighbors(row, col, matrix){
+    let neighbors = [];
+    if(row > 0 && matrix[row-1][col] === 1){
+        neighbors.push([row-1, col])
+    }
+    if(row < matrix.length-1 && matrix[row+1][col] === 1){
+        neighbors.push([row+1, col])
+    }
+    if ( col > 0 && matrix[row][col-1]=== 1){
+        neighbors.push([row, col-1])
+    }
+    if(col < matrix[0].length-1 && matrix[row][col+1]===1){
+        neighbors.push([row, col+1])
+    }
+    return neighbors
+}
+
+const matrix = [[1,1,1], [1,1,1], [1,1,1]]
+// console.log(getNeighbors(1,1,matrix))
