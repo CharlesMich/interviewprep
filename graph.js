@@ -70,3 +70,21 @@ function getNeighbors(row, col, matrix){
 
 const matrix = [[1,1,1], [1,1,1], [1,1,1]]
 // console.log(getNeighbors(1,1,matrix))
+
+function islandSize(row, col, graph){
+    let visited = new Set([[row, col].toString()]);
+    let stacked = [[row, col]]
+
+    while(stacked.length){
+        let node = stacked.pop();
+        let neighbors = getNeighbors(node[0], node[1], graph)
+        for (let neighbor of neighbors){
+            if(!visited.has(neighbor.toString())){
+                visited.add(neighbor.toString());
+                stacked.push(neighbor)
+            }
+        }
+    }
+    return visited.size;
+}
+
