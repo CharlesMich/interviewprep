@@ -879,3 +879,10 @@ var lengthOfLongestSubstring = function(s) {
  }
   return s.slice(longest[0],longest[1]).length;
 };
+
+// divide an integer without using * or / operator
+var divide = function(dividend, divisor, sum=0) {
+    if(dividend < Math.abs(divisor)) return sum;
+     if ( dividend > Math.abs(divisor)) sum = sum + 1;
+     return divide(dividend-Math.abs(divisor), divisor, sum)
+ };
