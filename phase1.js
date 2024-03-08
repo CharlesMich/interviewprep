@@ -151,6 +151,132 @@ function searchInsert(nums, target){
     }
 }
 
+
+// Longest palindrome substring
+var longestPalindrome = function(s) {
+    let results = "";
+    
+    for(let i = 0; i < str.length; i++) {
+        let char = str[i];
+        let left = i;
+        let right = i;
+        
+        while(left > 0 && str[left - 1] === char) left--;
+        
+        while(right < str.length && str[right + 1] === char) {
+            right++;
+            i++;
+        }
+		
+        while(left >=0 && right < str.length - 1 && str[left - 1] === str[right + 1]) {
+            left--;
+            right++;
+        }
+        
+        if(results.length < (right - left + 1)) results = str.slice(left, right + 1);
+    }
+    return results;
+};
+
+
+// zigzag coversion
+var convert = function(s, numRows) {
+    if (numRows === 1 || numRows >= s.length) {
+        return s;
+      }
+    
+      const rows = Array(numRows).fill('');
+      console.log("--",rows)
+      let currentRow = 0;
+      let direction = -1;
+      for (let char of s) {
+        rows[currentRow] += char;
+        
+        
+        if (currentRow === 0 || currentRow === numRows - 1) {
+          direction = -direction; 
+        }
+    
+        currentRow += direction;
+      }
+    
+      return rows.join('');
+};
+
+// string to integer
+var myAtoi = function(s) {
+    let res = parseInt(s)
+    if (isNaN(res)) return 0;
+    if(res > Math.pow(2, 31)-1) {
+        return Math.pow(2, 31)-1;
+    } else if(res < -1*Math.pow(2, 31)) {
+        return -1*Math.pow(2, 31);
+    } else {
+        return res;
+    }
+};
+
+// container with most water
+// Input: height = [1,8,6,2,5,4,8,3,7]
+// Output: 49
+var maxArea = function(height) {
+    let [left, right, maxArea] = [0, height.length - 1, 0];
+
+    while(left < right) {
+        let containerHeight, currentArea;
+        let containerWidth = right - left;
+
+        if(height[left] < height[right]) {
+            containerHeight = height[left];
+            left++
+        } else {
+            containerHeight = height[right];
+            right--
+        }
+
+        currentArea = containerWidth * containerHeight;
+
+        if(currentArea > maxArea) {
+            maxArea = currentArea
+        }
+    }
+
+    return maxArea
+};
+
+// integer to roman
+// Input: num = 3
+// Output: "III"
+var intToRoman = function(num) {
+    const arr = [1000, 500, 100,50,10,5,1];
+    const symbols = ['M', 'D','C','L','X','V','I'];
+    let res = '';
+    for(let i=0; i<arr.length; i++){
+        res+=symbols[i].repeat(Math.floor(num/arr[i]));
+        num = num%arr[i];
+        if(i==0 && num>=900){
+            res+='CM';
+            num -=900;
+        }else if(i==1 && num>=400){
+            res+='CD';
+            num-=400;
+        }else if(i==2 && num>=90){
+            res+='XC';
+            num-=90;
+        }else if(i==3 && num>=40){
+            res+='XL';
+            num-=40
+        }else if(i==4 && num>=9){
+            res+='IX';
+            num-=9
+        }else if(i==5 && num>=4){
+            res+='IV';
+            num-=4
+        }
+    }
+    return res;
+};
+
 // return length of last word
 function lengthOfLastWord(s){
      let wordArr = s.split(' ');
@@ -739,6 +865,7 @@ var combinationSum = function(candidates, target) {
 
 
 // mar 5
+// longest substring without repeating characters
 var lengthOfLongestSubstring = function(s) {
     const lastSeen = {};
  let longest = [0,1];
