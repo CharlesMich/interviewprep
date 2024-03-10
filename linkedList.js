@@ -68,5 +68,34 @@ var hasCycle = function(head) {
    return dummy.next;
 }
 
+// Given the head of a linked list, remove the nth node from the end of the list and return its head.
+class ListNode {
+    constructor(val = 0, next = null) {
+        this.val = val;
+        this.next = next;
+    }
+}
 
+/**
+ * Remove the nth node from the end of a singly linked list and return its head.
+ * @param {ListNode} head - The head of the linked list.
+ * @param {number} n - The index of the node to remove from the end.
+ * @return {ListNode} - The head of the modified linked list.
+ */
+
+var removeNthFromEnd = function(head, n) {
+    const copy = new ListNode(0);
+    copy.next = head;
+    let first = copy;
+    let second = copy;
+    for ( let i = 0; i < n + 1; i++){
+        first = first.next;
+    }
+    while (first !== null){
+        first = first.next;
+        second = second.next;
+    }
+    second.next = second.next.next
+    return copy.next
+};
     
