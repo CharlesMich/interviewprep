@@ -44,11 +44,20 @@ function romanToInt1(s){
 // console.log(romanToInt1('MCMXCIV'))
 
 // Write a function to find the longest common prefix string amongst an array of strings.
-let longestCommonPrefix = function(strs) {
-    let str = "";
-    strs.sort((a,b)=> b.length-a.length);
-   for (let i = 0; i < strs[0].length; i++){
-   }
+var longestCommonPrefix = function (strs) {
+    if (strs.length === 0) {
+        return "";
+    }
+
+    let prefix = strs[0];
+
+    for (let word of strs) {
+        while (word.indexOf(prefix) !== 0) {
+            prefix = prefix.slice(0, -1);
+            if (prefix === '') return ''
+        }
+    }
+    return prefix;
 };
 
 strs = ["flower","flow","flight"]
@@ -800,7 +809,7 @@ var threeSum = function(nums) {
 // console.log(threeSum(nums3))
 
 // longest substring without repeating
-let string = "abcabcbb"
+let string = "abcabcdb"
 // answer: Output: 3
 var lengthOfLongestSubstring = function(s) {
     let arr = [];
@@ -816,7 +825,7 @@ var lengthOfLongestSubstring = function(s) {
     return arr.length;
 };
 
-// console.log(lengthOfLongestSubstring(string))
+console.log(lengthOfLongestSubstring(string))
 
 var letterCombinations = function(digits) {
 let digitsMapping = {

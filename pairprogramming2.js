@@ -43,7 +43,7 @@ class Node {
 
 // Elements that are not 5 can appear in any order in the output, as long as all 5s are at the end of the array.
 
-const arr = [12, 5, 1, 5, 12, 7]
+const arr = [12, 5, 1, 5, 12, 1]
 function fiveSort(arr){
 
     let newArr = [];
@@ -51,13 +51,16 @@ function fiveSort(arr){
     for (let i = 0; i < arr.length; i++){
         // console.log(i)
         if(arr[i] == 5){
-            newArr.push(5);
+           temp = arr[i]
+           arr[i] = arr[i+1]
+           arr[i+1] = temp
         }
+        
     }
-    const arr1 = arr.filter(ele=> ele!== 5);
-    console.log(arr1)
-    return [...arr, ...newArr]
-    
+    // const arr1 = arr.filter(ele=> ele!== 5);
+    // console.log(arr1)
+    // return [...arr, ...newArr]
+    return arr
     // loop through the array
     // check for 5's
     // if it is a 5, switch it with i+1;

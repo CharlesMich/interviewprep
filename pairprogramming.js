@@ -17,3 +17,24 @@ for (let item in obj){
 }
    return arr;
 }
+
+// longest substring without repeating
+let string = "abcabcdb"
+// answer: Output: 3
+var lengthOfLongestSubstring = function(s) {
+    let arr = [];
+    let stringArr = s.split("");
+
+    for (let i = 0; i < stringArr.length; i++ ){
+        if (!arr.includes(stringArr[i])){
+            arr.push(stringArr[i])
+        } else {
+            return arr.length;
+        }
+    }
+    return arr.length;
+};
+
+console.log(lengthOfLongestSubstring(string))
+
+
