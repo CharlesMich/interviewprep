@@ -957,3 +957,21 @@ var maxSubArray = function (nums) {
     let subArray = [];
     
 };
+
+var convertToTitle = function(columnNumber) {
+    let letnum = {
+        1:'A',
+        2:'B',
+        3:'C',
+        4:'D',
+        5:'E'
+    }
+    let num;
+    if(columnNumber <= 26){
+        num = letnum[columnNumber]
+        return num;
+    } else {
+        if(columnNumber % 26 )
+    }
+}
+    console.log(convertToTitle(5))
