@@ -825,7 +825,7 @@ var lengthOfLongestSubstring = function(s) {
     return arr.length;
 };
 
-console.log(lengthOfLongestSubstring(string))
+// console.log(lengthOfLongestSubstring(string))
 
 var letterCombinations = function(digits) {
 let digitsMapping = {
@@ -946,7 +946,7 @@ var permute = function(nums) {
     permute2(0);
     return newArr;
 };
-console.log(permute([1,2,3]))
+// console.log(permute([1,2,3]))
 
 // Given an integer array nums, find the subarray with the largest sum, and return its sum.
 // Input: nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
@@ -971,7 +971,35 @@ var convertToTitle = function(columnNumber) {
         num = letnum[columnNumber]
         return num;
     } else {
-        if(columnNumber % 26 )
+        // if(columnNumber % 26 )
     }
 }
-    console.log(convertToTitle(5))
+    // console.log(convertToTitle(5))
+
+    var lengthOfLongestSubstring = function(s) {
+        let arrA = ""
+        let arr = s.split("")
+        let newArr = []
+       
+        for (let i = 0; i < arr.length; i++){
+            for(let j = i+1; j < arr.length; j++){
+                newArr.push(arr[i])
+                if(!newArr.includes(arr[j])){
+                    
+                    newArr.push(arr[j])
+                    console.log(newArr)
+                }
+    
+            }
+            if(arrA.length < newArr.length){
+                for(let item of newArr){
+                arrA = ""    
+                arrA += item;
+                }
+            }
+            newArr=[]
+        }
+        console.log(arrA)
+    return arrA.length
+    };
+    console.log(lengthOfLongestSubstring('ababcde'))
