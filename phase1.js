@@ -1077,3 +1077,37 @@ function arrLength(num1){
     }
 }
 console.log(arrLength([1,2,3,4]))
+
+// Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
+var multiply = function(num1, num2) {
+    let res = BigInt(num1) * BigInt(num2)
+    return res.toString()
+};
+
+
+// Given an integer array nums, find the subarray with the largest sum, and return its sum.
+// Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+// Output: 6
+// Explanation: The subarray [4,-1,2,1] has the largest sum 6.
+var maxSubArray = function(nums) {
+    let currentSum =0
+   let maxSum = -Infinity
+   if (nums.length === 1) {
+       return nums[0];
+   }
+
+   for (let i = 0; i < nums.length; i++) {
+
+       currentSum += nums[i]
+     
+       if (maxSum < currentSum) {
+           maxSum = currentSum
+       }
+
+        if(currentSum < 0){
+            currentSum =0
+        }
+
+   }
+   return maxSum
+};
