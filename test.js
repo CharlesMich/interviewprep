@@ -69,4 +69,18 @@ var canPlaceFlowers = function(flowerbed, n) {
     
 };
 
-console.log(canPlaceFlowers([0,0,0], 1))
+// console.log(canPlaceFlowers([0,0,0], 1))
+
+function permute(arr){
+    let newArr = []
+    console.log("charles")
+    for (let i = 0; i < arr.length-1; i++){
+        console.log(i)
+        for(let j = i+1; j < arr.length; j++){
+            newArr.push([arr[i], arr[j]])
+        }
+    }
+    return newArr
+}
+let arr = [1,2,3,4, 5,6]
+console.log(permute(arr))
