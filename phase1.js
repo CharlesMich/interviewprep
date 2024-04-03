@@ -988,7 +988,7 @@ var convertToTitle = function(columnNumber) {
                 if(!newArr.includes(arr[j])){
                     
                     newArr.push(arr[j])
-                    console.log(newArr)
+                    // console.log(newArr)
                 }
     
             }
@@ -1000,10 +1000,10 @@ var convertToTitle = function(columnNumber) {
             }
             newArr=[]
         }
-        console.log(arrA)
+        // console.log(arrA)
     return arrA.length
     };
-    console.log(lengthOfLongestSubstring('ababcde'))
+    // console.log(lengthOfLongestSubstring('ababcde'))
 
     var lengthOfLongestSubstring1 = function(s) {
         const lastSeen = {};
@@ -1023,22 +1023,51 @@ var convertToTitle = function(columnNumber) {
     //    longest palindrome in a string
     var longestPalindrome = function(s) {
         let pal;
-       
-        console.log(s.split('') == s.split('').reverse())
-       console.log(s)
         if(s.length <= 1) return pal;
         if (s.length > 1){
-            if(s.split('') == s.split('').reverse()){
-                console.log(s.split('').join('') == s.split('').reverse().join(''))
-                if (s.length > pal && pal.length){
+            if(s == s.split('').reverse().join('')){
                     pal = s;
-                }
+                    return pal
+                
             } else {
                 return longestPalindrome(s.split('').slice(0,-1).join(''))
             }
         }
     }
-    console.log(longestPalindrome('ababad'))
+    console.log(longestPalindrome('ababab'))
+
+    var longestPalindrome1 = function(s) {
+        if (s.length < 2) {
+               return s;
+           }
+       
+       let maxlen = 0;
+       let lo = 0;
+       let result = s
+       
+       const expandPalindrome = (j,k) => {
+           while (j >= 0 && k < s.length && s[j] === s[k]){
+               j--;
+               k++;
+           }
+           if(maxlen < k - j - 1){
+               maxlen = k - j - 1;
+               lo = j + 1;
+           }
+       }
+        for (let i = 0; i < s.length; i++) {
+               expandPalindrome(i, i);
+               expandPalindrome(i, i + 1);
+           }
+       
+           return result.substring(lo, lo + maxlen);
+       }
+       
+       
+       
+       
+       
+       
 
     // Given an integer array nums of length n and an integer target, find three integers in nums such that the sum is closest to target. Return the sum of the three integers. You may assume that each input would have exactly one solution.
 //     Input: nums = [-1,2,1,-4], target = 1
@@ -1049,7 +1078,7 @@ var threeSumClosest = function(nums, target) {
     let num;
     let matrix = [];
     for (let i = 0; i < nums.length-2; i++){
-        console.log(nums[i])
+        // console.log(nums[i])
         for (let j = i + 1; j < nums.length-1; j++ ){
             
             for (let k = j + 1; k < nums.length; k++){
@@ -1067,16 +1096,16 @@ var threeSumClosest = function(nums, target) {
         }
     }
 };
-console.log(threeSumClosest([-1,2,1,-4], 1))
+// console.log(threeSumClosest([-1,2,1,-4], 1))
 
 function arrLength(num1){
     let i = 0;
     while ( i < num1.length+1){
-        console.log(num1[i])
+        // console.log(num1[i])
         i++
     }
 }
-console.log(arrLength([1,2,3,4]))
+// console.log(arrLength([1,2,3,4]))
 
 // Given two non-negative integers num1 and num2 represented as strings, return the product of num1 and num2, also represented as a string.
 var multiply = function(num1, num2) {
