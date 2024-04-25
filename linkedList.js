@@ -98,4 +98,28 @@ var removeNthFromEnd = function(head, n) {
     second.next = second.next.next
     return copy.next
 };
-    
+// multiply 1 x x numbers
+
+function helper(a,b){
+    let product = 0;
+    let base = 1
+    let numArr = b.toString().split().reverse();
+    for (let i = 0; i < numArr.length; i++){
+        product = product + a * numArr[i];
+    }
+    return product
+}
+// console.log(helper( 2, 1000))
+
+// multiply multiple digits
+function multiply(top,bottom){
+
+    let sum = 0;
+    let numArr = bottom.toString().split();
+    for (let i = 0; i < numArr.length; i++){
+        sum = sum + helper(top, numArr[i])
+    }
+
+    return sum 
+}
+console.log(multiply(12345,54321))
