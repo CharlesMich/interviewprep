@@ -69,11 +69,27 @@ var kidsWithCandies = function(candies, extraCandies) {
 
 // console.log(kidsWithCandies([2,3,5,1,3], 3))
 
-// You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots. Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
+// 4. You have a long flowerbed in which some of the plots are planted, and some are not. However, flowers cannot be planted in adjacent plots. Given an integer array flowerbed containing 0's and 1's, where 0 means empty and 1 means not empty, and an integer n, return true if n new flowers can be planted in the flowerbed without violating the no-adjacent-flowers rule and false otherwise.
 var canPlaceFlowers = function(flowerbed, n) {
-    
-    for (let i = 0; i < flowerbed.length; i++){
+    if(flowerbed.length === 1 && flowerbed[0] === 0 && n === 1){
+        return true
+    }
+     if(n === 0) return true
+     for (let i = 0; i < flowerbed.length; i++){
+        if (i === 0 && flowerbed[i] === 0 && flowerbed[i+1]===0) {
+             flowerbed[i] = 1;
+            n = n-1;
+            if(n === 0) return true;
+            continue;
+        }
+        if (i === flowerbed.length-1 && flowerbed[i] === 0 && flowerbed[i-1]===0) {
+             flowerbed[i] = 1;
+            n = n-1;
+            if(n === 0) return true;
+            continue;
+        }
         if(flowerbed[i] === 0 && flowerbed[i-1] === 0 && flowerbed[i+1]===0) {
+           
             flowerbed[i] = 1;
             n = n-1;
             if(n === 0) return true;
@@ -81,7 +97,94 @@ var canPlaceFlowers = function(flowerbed, n) {
         } 
     }
 return false
-    
 };
 
-console.log(canPlaceFlowers([1,0,0,0,1], 2))
+// console.log(canPlaceFlowers([1,0,0,0,1], 2))
+
+// 5. Given an input string s, reverse the order of the words. A word is defined as a sequence of non-space characters. The words in s will be separated by at least one space.
+// Return a string of the words in reverse order concatenated by a single space. Note that s may contain leading or trailing spaces or multiple spaces between two words. The returned string should only have a single space separating the words. Do not include any extra spaces.
+var reverseWords = function(s) {
+    let sArray = s.split(' ')
+    let newArr = [];
+    for (let i=0; i< sArray.length; i++){
+     if(sArray[i].length > 0){
+         newArr.push(sArray[i])
+     }
+    }
+     return newArr.reverse().join( ' ')
+   
+ };
+
+// 6. reverse vowels in the 
+ var reverseVowels = function(s) {
+    let vowels = 'aeiou'
+    let sArray = s.split('')
+   let string = "";
+   let reversedVowels = s.split('').reverse().filter(a=> vowels.includes(a))
+  for (let i=0; i < sArray.length; i++){
+    if (vowels.includes(sArray[i])){
+        string += reversedVowels.shift();
+    } else {
+        string+=sArray[i]
+    }
+  }
+  return string
+};
+// console.log(reverseVowels('laetcodu'))
+
+// 7 Given an integer array nums, return an array answer such that answer[i] is equal to the product of all the elements of nums except nums[i]. The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit integer. You must write an algorithm that runs in O(n) time and without using the division operation.
+
+// Input: nums = [1,2,3,4]
+// Output: [24,12,8,6]
+
+
+var productExceptSelf = function(nums) {
+    const n = nums.length;
+    const output =[];
+
+    const leftProducts =[];
+    const rightProducts =[];
+    leftProducts[0] = 1;
+    rightProducts[n - 1] = 1;
+
+    for (let i = 1; i < n; i++) {
+        leftProducts[i] = leftProducts[i - 1] * nums[i - 1];
+    }
+    
+    for (let i = n - 2; i >= 0; i--) {
+        rightProducts[i] = rightProducts[i + 1] * nums[i + 1];
+    }
+
+    for (let i = 0; i < n; i++) {
+        output[i] = leftProducts[i] * rightProducts[i];
+    }
+    
+    return output;
+
+};
+// console.log(productExceptSelf([1,2,3,0]))
+
+// Given an integer array nums, return true if there exists a triple of indices (i, j, k) such that i < j < k and nums[i] < nums[j] < nums[k]. If no such indices exists, return false.
+var increasingTriplet = function(nums) {
+    // for (let i = 0; i < nums.length; i++){
+    //     for (let j = i+1; j < nums.length; j++){
+    //         for (let k = j + 1; k < nums.length; k++){
+    //             if (nums[i] < nums[j] && nums[j]< nums[k]){
+                  
+    //                 return true
+    //             }
+    //         }
+           
+    //     }
+    // }
+    // return false
+    let a = Infinity;b = Infinity, c = Infinity;
+     for(let i=0;i<nums.length;i++){
+      if(a>= nums[i]) a=nums[i];
+      else if(b>= nums[i]) b =nums[i];
+      else if(c>= nums[i]) return true;
+    }
+    return false
+};
+
+console.log(increasingTriplet([5,4,3,2,1]))

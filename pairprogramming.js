@@ -38,3 +38,4 @@ var lengthOfLongestSubstring = function(s) {
 console.log(lengthOfLongestSubstring(string))
 
 
+Write a function, isDescendant, that takes two DOM nodes as arguments, a child and a parent. This method should verify that the child node is a descendant of the parent node, and return true or false. The child does not have to be a direct descendant of the parent.
