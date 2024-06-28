@@ -187,6 +187,67 @@ var increasingTriplet = function(nums) {
     return false
 };
 
-console.log(increasingTriplet([5,4,3,2,1]))
+// console.log(increasingTriplet([5,4,3,2,1]))
 
 // Given an array of characters chars, compress it using the following algorithm: Begin with an empty string s. For each group of consecutive repeating characters in chars: If the group's length is 1, append the character to s. Otherwise, append the character followed by the group's length. The compressed string s should not be returned separately, but instead, be stored in the input character array chars. Note that group lengths that are 10 or longer will be split into multiple characters in chars. After you are done modifying the input array, return the new length of the array. You must write an algorithm that uses only constant extra space.
+
+var compress1 = function(chars) {
+    let string = []
+let count = 1;
+for(let i = 0; i < chars.length; i++){
+   if(chars[i] == chars[i+1]){
+       count = count + 1;
+      continue
+   } else {
+       string.push(chars[i]);
+       string.push(count);
+       count=1
+       continue
+   }
+}
+return string;
+};
+
+const  chars = ["a","a","a","a","b","b","c","c","c"]
+// console.log(compress(chars))
+
+// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.nNote that you must do this in-place without making a copy of the array.
+// Input: nums = [0,1,0,3,12]
+var moveZeroes = function(nums) {
+    for (let i = 0; i < nums.length-1; i++){
+        if(nums[i] == 0){
+         temp = nums[i];
+            nums[i] = nums[i+1];
+            nums[i+1] = temp;
+            continue
+        } 
+    }
+    return nums
+};
+// console.log(moveZeroes([0,1,0,3,12]))
+
+// compress strings
+// Given an array of characters chars, compress it using the following algorithm: Begin with an empty string s. For each group of consecutive repeating characters in chars:
+
+var compress = function(chars) {
+    let count = 0;
+    let char;
+    const newArr = [];
+    for(let i = 0; i < chars.length; i++){
+        if(chars[i] !== chars[i-1]){
+            count >=1 && newArr.push(char);
+            count >=1 && newArr.push(count.toString())
+            char = chars[i];
+            count = 1;
+         
+        }
+       
+        if (chars[i] == chars[i-1]){
+            count = count+1
+          
+        }
+    }
+return newArr;
+};
+
+console.log(compress(chars))

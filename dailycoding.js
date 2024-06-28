@@ -52,7 +52,7 @@ function cons(a, b){
 
 }
 
-console.log(cons(3,4))
+// console.log(cons(3,4))
 // Implement car and cdr
 function car(xyz){
     return xyz
@@ -62,7 +62,7 @@ function cdr(xyz){
     return xyz
 }
 
-console.log(car(cons(3, 4)))
+// console.log(car(cons(3, 4)))
 
 
 // Given the mapping a = 1, b = 2, ... z = 26, and an encoded message, count the number of ways it can be decoded. For example, the message '111' would give 3, since it could be decoded as 'aaa', 'ka', and 'ak'. You can assume that the messages are decodable. For example, '001' is not allowed.
@@ -100,7 +100,27 @@ function decode(num){
     
     return arr;
 }
-console.log(decode(121))
+// console.log(decode(121))
 
 // Given a list of integers, write a function that returns the largest sum of non-adjacent numbers. Numbers can be 0 or negative. For example, [2, 4, 6, 2, 5] should return 13, since we pick 2, 6, and 5. [5, 1, 1, 5] should return 10, since we pick 5 and 5.
+
+// A number is considered perfect if its digits sum up to exactly 10. Given a positive integer n, return the n-th perfect number.  For example, given 1, you should return 19. Given 2, you should return 28.
+function perfectNumber(n){
+    let numArr = n.toString().split('')
+   let newArr =  numArr.map(num => {
+       let  x = parseInt(num)
+        return x
+    })
+    // return newArr;
+    let sum = newArr.reduce((a,b)=> a + b)
+    console.log(sum)
+
+    if (newArr.reduce((a,b)=> a + b) == 10){
+        return newArr
+    } else {
+        let diff = 10-sum
+    }
+    
+}
+console.log(perfectNumber(10))
 
