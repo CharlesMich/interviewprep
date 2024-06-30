@@ -247,7 +247,7 @@ var compress = function(chars) {
 return newArr;
 };
 
-console.log(compress(chars))
+// console.log(compress(chars))
 
 var compress2 = function(chars) {
     let res = "";
@@ -281,4 +281,14 @@ var compress2 = function(chars) {
 
     return res.length;
 };
-console.log(compress2(chars))
+// console.log(compress2(chars))
+
+
+// Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
+var isSubsequence = function(s, t) {
+    
+};
+
+
+Input: s = "abc", t = "ahbgdc"
+Output: true
