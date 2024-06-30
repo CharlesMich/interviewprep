@@ -231,7 +231,7 @@ var moveZeroes = function(nums) {
 
 var compress = function(chars) {
     let count = 0;
-    let char;
+    let char = "";
     const newArr = [];
     for(let i = 0; i < chars.length; i++){
         if(chars[i] !== chars[i-1]){
@@ -239,15 +239,46 @@ var compress = function(chars) {
             count >=1 && newArr.push(count.toString())
             char = chars[i];
             count = 1;
-         
         }
-       
         if (chars[i] == chars[i-1]){
             count = count+1
-          
         }
     }
 return newArr;
 };
 
 console.log(compress(chars))
+
+var compress2 = function(chars) {
+    let res = "";
+    let c = ' ';
+    let count = 0;
+    for (let i = 0; i < chars.length; i++) {
+        if (c === ' ') {
+            c = chars[i];
+            count++;
+            res += c;
+        } else {
+            if (chars[i] === c) {
+                count++;
+            } else {
+                if (count !== 1) {
+                    res += count;
+                }
+                c = ' ';
+                count = 0;
+                continue;
+            }
+        }
+    }
+    if (count !== 1) {
+        res += count;
+    }
+    
+    for (let i = 0; i < res.length; i++) {
+        chars[i] = res[i];
+    }
+
+    return res.length;
+};
+console.log(compress2(chars))
