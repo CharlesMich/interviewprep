@@ -288,6 +288,13 @@ var compress2 = function(chars) {
 var isSubsequence = function(s, t) {
     let sArray = s.split('')
     let tArray = t.split('')
+    for (let i=  0; i < sArray.length; i++){
+        for (let j = 0; j < tArray.length; j++){
+            if(tArray[j] == sArray[i]){
+                
+            }
+        }
+    }
     console.log(sArray, tArray)
 };
 
