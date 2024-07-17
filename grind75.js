@@ -291,7 +291,7 @@ var isSubsequence = function(s, t) {
     for (let i=  0; i < sArray.length; i++){
         for (let j = 0; j < tArray.length; j++){
             if(tArray[j] == sArray[i]){
-                
+
             }
         }
     }
@@ -301,3 +301,17 @@ var isSubsequence = function(s, t) {
 Input: s = "abc", t = "ahbgdc"
 Output: true
 isSubsequence(s,t)
+
+// move zeroes
+let moveZeroes = function(nums){
+    let zero = 0;
+    for (let i = 0; i < nums.length; i++){
+        if(nums[i] != 0){
+            [nums[i], nums[zero]] =  [nums[zero], nums[i]]
+            zero++
+        } 
+    }
+    return nums;
+}
+let nums = [1,2,0,4,3,0,5]
+console.log(moveZeroes(nums))
