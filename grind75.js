@@ -286,16 +286,16 @@ var compress2 = function(chars) {
 
 // Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
 var isSubsequence = function(s, t) {
-    let sArray = s.split('')
-    let tArray = t.split('')
-    for (let i=  0; i < sArray.length; i++){
-        for (let j = 0; j < tArray.length; j++){
-            if(tArray[j] == sArray[i]){
+  if (s.length > t.length) return false;
 
-            }
-        }
+  
+  let subsequence = 0;
+  for (let i = 0; i < t.length; i++){
+    if(t[i] == s[subsequence]){
+        subsequence++
     }
-    console.log(sArray, tArray)
+  }
+  return subsequence === s.length;
 };
 
 Input: s = "abc", t = "ahbgdc"
