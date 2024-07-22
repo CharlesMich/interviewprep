@@ -335,4 +335,35 @@ var maxArea = function(height) {
     return maxArea
 }
 
-// 
+// You are given an integer array nums and an integer k. In one operation, you can pick two numbers from the array whose sum equals k and remove them from the array.Return the maximum number of operations you can perform on the array.
+var maxOperations = function(nums, k) {
+    // let count = 0
+    // for (let i = 0; i < nums.length; i++){
+    //     for (let j = 0; j < nums.length; j++){
+    //         if(nums[i] + nums[j] === k){
+    //             nums.splice(i, 1);
+    //             nums.splice(j-1,1);
+    //             console.log(nums, i, j)
+    //             count++;
+    //         }
+    //     }
+    //     return count;
+    // }
+    let set = {};
+    let res = 0;
+    for (let i of nums){
+        let x = k -i;
+        if(set[x]>= 1){
+            res++
+            set[x]--
+        }
+        else {
+            (set[i]) ? set[i]++ : set[i]=1
+        }
+    }
+    return res
+};
+
+const nums1 = [1,2,3,4]
+const k = 5
+console.log(maxOperations(nums1, k))
