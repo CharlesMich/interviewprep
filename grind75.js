@@ -367,3 +367,19 @@ var maxOperations = function(nums, k) {
 const nums1 = [1,2,3,4]
 const k = 5
 console.log(maxOperations(nums1, k))
+
+// You are given an integer array nums consisting of n elements, and an integer k. Find a contiguous subarray whose length is equal to k that has the maximum average value and return this value. Any answer with a calculation error less than 10-5 will be accepted.
+const findMaxAverage = function(nums, k){
+    let avg = -Infinity
+    let sum = 0;
+    let left = 0;
+    for (let i = 0; i < nums.length; i++){
+        sum += nums[i];
+        if(i - left + 1 === k){
+            avg = Math.max(avg, sum / k)
+            sum -= nums[left];
+            left++
+        }
+    }
+    return avg
+}
