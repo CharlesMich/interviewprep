@@ -414,3 +414,35 @@ let maxVowels = function(s,k){
     }
     return max
 }
+
+// Given a binary array nums and an integer k, return the maximum number of consecutive 1's in the array if you can flip at most k 0's.
+
+var longestOnes = function(nums, k) {
+    let max = 0;
+    let usedFlips = 0;
+    let slow = 0;
+
+    for (let i = 0; i < nums.length; i++){
+        if(nums[i] === 0){
+            if (usedFlips < k){
+                usedFlips++;
+            } else {
+                if(nums[slow] === 0){
+                    slow++;
+                } else {
+                    while(nums[slow]!== 0 && slow <=1){
+                        slow++;
+                    }
+                    slow++;
+                }
+            }
+        }
+        if(slow === 1 && (nums[i] === 0 && usedFlips < k || nums[i] === 1))
+        {
+            max = Math.max(max, 1);
+        } else {
+            max = Math.max(max, i - slow+1)
+        }
+    }
+    return max
+};
