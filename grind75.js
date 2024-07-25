@@ -383,3 +383,34 @@ const findMaxAverage = function(nums, k){
     }
     return avg
 }
+
+// Given a string s and an integer k, return the maximum number of vowel letters in any substring of s with length k. Vowel letters in English are 'a', 'e', 'i', 'o', and 'u'.
+
+let maxVowels = function(s,k){
+    const VOWELS = ['a', 'e', 'i', 'o', 'u']
+    let max = 0;
+    let counter = 0;
+    for (let i = 0; i < s.length-k+1; i++){
+    if ( i === 0 ){
+    for (let j=0; j < k; j++){
+    if(VOWELS.includes(s[j])) {
+    counter++;
+    }
+    }
+    } else {
+    if (VOWELS.includes(s[i - 1])) {
+    counter--;
+    }
+    if(VOWELS.includes(s[i+k-1])){
+    counter++
+    }
+    }
+    if(counter > max) {
+    max = counter
+    }
+    if(max === k){
+    return max
+    }
+    }
+    return max
+}
