@@ -448,3 +448,20 @@ var longestOnes = function(nums, k) {
 };
 
 // Given a binary array nums, you should delete one element from it. Return the size of the longest non-empty subarray containing only 1's in the resulting array. Return 0 if there is no such subarray.
+var longestSubarray = function(nums) {
+    if(!nums.includes(1)) return 0;
+    const zeroindexes = nums.reduce((acc, item, index)=> {
+     if(!item) acc.push(index+1);
+     return acc
+    }, [0]);
+    zeroindexes.push(nums.length+1)
+ 
+    if(zeroindexes.length === 2) return nums.length - 1;
+    const result = zeroindexes.reduce((acc, item, index) => {
+     if (zeroindexes[index + 1] && ((zeroindexes[index + 1]-item) > acc)) acc = zeroindexes[index+1] - item -1
+     if (zeroindexes[index+2] && ((zeroindexes[index+2] - item - 2) > acc)) acc = zeroindexes[index + 2] - item - 2
+     return acc
+ 
+    }, 0)
+    return result
+ };
